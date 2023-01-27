@@ -1,0 +1,40 @@
+package com.tpe.domain;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(length = 25,nullable = false)
+    private String firstName;
+    @Column(length = 25,nullable = false)
+    private String lastName;
+    @Column(length = 25,nullable = false, unique = true)
+    private String userName;
+    @Column(length = 255,nullable = false)// length 255 olma sebebi; password  hashlemeye girerse karakter sayısı daha fazla olacaktır
+    private String password;
+
+    @JoinTable(name = "tbl_user_role",
+    joinColumns = @JoinColumn(name = "user_id"),
+    inverseJoinColumns =@JoinColumn(name = "role_id") )
+    @ManyToMany(fetch = FetchType.EAGER)            // tek bir user sorgusu yaptığımızda role ler de gelsin diye "eager" ekledik.
+    private Set<Role> roles = new HashSet<>(); // rollerin uniq olması için Set Generic yapı tercih edildi
+
+
+}

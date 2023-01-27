@@ -1,0 +1,14 @@
+----JWT calisma mantitigi ---------------------
+1.Kullanıcı, web uygulamasına giriş yapmak için kullanıcı adı ve şifresini giriyor.
+
+2.Sunucu, kullanıcının bilgilerini doğruluyor ve kullanıcının yetkilendirilmiş olduğuna dair bir JWT oluşturuyor.
+
+3.Sunucu, kullanıcıya JWT'yi gönderiyor.
+
+4.Tarayıcı, JWT'yi saklıyor ve tüm isteklerde JWT'yi sunucuya gönderiyor.
+
+5.Sunucu, gelen isteklerde JWT'yi doğruluyor ve kullanıcının yetkisi olduğuna dair bir cevap veriyor.
+
+6.Kullanıcı, sunucudan alınan yetkilendirme bilgisi ile uygulamada işlem yapmaya devam ediyor.
+
+7.Kullanıcı çıkış yaptığında JWT otomatik olarak silinir veya süresi dolduğunda geçersiz hale gelir.
