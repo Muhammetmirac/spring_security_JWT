@@ -15,7 +15,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table
+@Table (name = "table_user")
 public class User {
 
     @Id
@@ -27,7 +27,8 @@ public class User {
     private String lastName;
     @Column(length = 25,nullable = false, unique = true)
     private String userName;
-    @Column(length = 255,nullable = false)// length 255 olma sebebi; password  hashlemeye girerse karakter sayısı daha fazla olacaktır
+    @Column(length = 255,nullable = false)// length 255 olma sebebi; password
+    // haslemeye girerse karakter sayısı daha fazla olacaktır
     private String password;
 
     @JoinTable(name = "tbl_user_role",

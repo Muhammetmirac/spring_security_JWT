@@ -15,7 +15,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table
+@Table(name="table_role")
 public class Role {
 
     @Id
@@ -28,15 +28,14 @@ public class Role {
 
 
     //"-rollerden user a gitmeyeceksek burada user oluşturmaya gerek yok
-    @ManyToMany(mappedBy = "roles")
-    private Set<User> users = new HashSet<>();
+//    @ManyToMany(mappedBy = "roles")
+//    private Set<User> users = new HashSet<>();
 
 
 
     @Override
     public String toString() {
         return "Role{" +
-
                 "name=" + name +
                 '}';
     }

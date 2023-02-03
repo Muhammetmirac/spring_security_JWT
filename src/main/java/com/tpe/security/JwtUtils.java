@@ -25,6 +25,15 @@ public class JwtUtils {         // bir nevi jwt alet cantamız diyebiliriz
     /*
     jwt token oluşturulurken jwtSecret fieldi ile belirlediğimiz  jwtExpirationMs kullanacağız
      */
+    //JWT token=base64(header)  +  base64(payload)   +   signature
+    // header: hash alg, token type:JWT
+    // payload: userId, username,....(claim)
+    //signature: secret key ,base64(header)  +  base64(payload)
+
+    //1-kullanıcı register olur:firstname,lastname,.email,password,username....
+    //2-username+password ile login olur: validate username ve password->token üretilir->token browserda saklanır
+    //3-user requestle geldiğinde headerda token var:token valide edilir: imzası geçerli mi
+    //4-yetkiler kontrol edilir: payload da username
 
     // -------------- GENERATE TOKEN ---------------------------
     public String generateToken (Authentication authentication){            //bu aşamada kullanıcı doğrulama aşamasını geçmiştir.
@@ -40,7 +49,7 @@ public class JwtUtils {         // bir nevi jwt alet cantamız diyebiliriz
                             signWith(SignatureAlgorithm.HS512,jwtSecret).  // jwt tokenimizin şifrelenme algoritmasını seçiyoruz
                             compact();  // verilenleri işle diyoruz
     }
-
+    //hashleme:tek yönlü şifreleme, geri döndürülemez
 
 
     // -------------- VALİDATE TOKEN ---------------------------
